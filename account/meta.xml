@@ -1,0 +1,22 @@
+<meta>
+  <info author="mmicha" type="script" name="account"/>
+  <script src="c_charCreator.lua" type="client" />
+  <script src="s_account.lua" type="server"/>
+  <script src="c_login.lua" type="client"/>
+
+
+  <file src="gfx/img/wallpaper.png" />
+	<file src="gfx/music/aud.mp3" />
+
+  <aclrequest>
+		<right name="command.addaccount" access="true"></right>
+		<right name="function.addAccount" access="true"></right>
+	</aclrequest>
+
+
+  <export function="isPromium" />
+  <export function="isAdmin" />
+  <export function="loadPlayerBaseData" />
+  <export function="savePlayerBaseData" />
+
+</meta>

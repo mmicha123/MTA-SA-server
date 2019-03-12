@@ -1,0 +1,11 @@
+<meta>
+	<info name="initializer" author="mmicha" type="script" />
+	
+	<script src="s_initializer.lua" />
+	
+	<aclrequest>
+		<right name="function.startResource" access="true"></right>
+        <right name="function.stopResource" access="true"></right>
+        <right name="function.restartResource" access="true"></right>
+	</aclrequest>
+</meta>

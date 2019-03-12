@@ -1,0 +1,21 @@
+<meta>
+  <info author="mmicha" type="gamemode" name="Modeflick"/>
+  <script src="c_realism.lua" type="client" cache="false"/>
+  <script src="s_realism.lua" type="server"/>
+  <script src="s_respawn.lua" type="server"/>
+
+
+
+  
+  <!--
+  <map src="map/Los-Angeles-City-Couty.map"/>
+  <script src="map/mapEditorScriptingExtension_s.lua" type="server"/>
+  <script src="map/mapEditorScriptingExtension_c.lua" type="client"/>
+  -->
+
+
+  <settings>
+    <setting name="*respawnTimer" value="4000" friendlyname="Time to respawn" group="Respawn" accept="500-10000"/>
+  </settings>
+  
+</meta>

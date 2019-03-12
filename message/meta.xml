@@ -1,0 +1,10 @@
+<meta>
+	<info name="message" author="mmicha" type="script" />
+	<include resource="common" />
+	
+	<script src="s_message.lua" />
+	<script src="c_message.lua" type="client" />
+
+	<export function="createMessage" type="shared" />
+	<export function="createMessageGlobal" />
+</meta>

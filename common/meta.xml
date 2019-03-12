@@ -1,0 +1,18 @@
+<meta>
+	<info author="mmicha" type="script" name="common" />
+	<script src="c_common.lua" type="client" cache="false" />
+	<script src="s_common.lua" type="server" />
+	<script src="sh_common.lua" type="shared" cache="false" />/>
+
+	<!-- common/shared -->
+	<export function="tnextIndex" type="shared" />
+	<export function="tfind" type="shared" />
+	<export function="contains" type="shared"/>
+
+
+
+
+	<!-- server -->
+	<export function="isPlayerLogedIn" type="server" />
+
+</meta>

@@ -1,0 +1,5 @@
+<meta>
+	<info author="mmicha" type="script" name="stats" />
+	<script src="c_stats.lua" type="client"/>
+	<script src="s_stats.lua" type="server" />
+</meta>
