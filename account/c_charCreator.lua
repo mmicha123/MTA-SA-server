@@ -64,21 +64,18 @@ end
 
 
 
-function show()
+function initShowCharWindow()
     showCharWindow(false)
 end
 addEvent("account_showCharGUI", true)
-addEventHandler("account_showCharGUI", root, show)
-
---addEventHandler("onClientResourceStart", resourceRoot, show)
+addEventHandler("account_showCharGUI", root, initShowCharWindow)
 
 
-
-function closeGUI()
+function closeShowCharWindow()
     showCharWindow(true)
 end
 addEvent("account_closeCharGUI", true)
-addEventHandler("account_closeCharGUI", root, closeGUI)
+addEventHandler("account_closeCharGUI", root, closeShowCharWindow)
 
 
 

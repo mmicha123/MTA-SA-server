@@ -1,0 +1,82 @@
+<VehiclePrice>
+    <vehicle model="admiral" price="65000"></vehicle>
+    <vehicle model="alpha" price="800000"></vehicle>
+    <vehicle model="bmx" price="629"></vehicle>
+    <vehicle model="banshee" price="880000"></vehicle>
+    <vehicle model="blista compact" price="1000"></vehicle>
+    <vehicle model="bobcat" price="45500"></vehicle>
+    <vehicle model="bravura" price="41000"></vehicle>
+    <vehicle model="broadway" price="52000"></vehicle>
+    <vehicle model="buccaneer" price="35000"></vehicle>
+    <vehicle model="buffalo" price="1650000"></vehicle>
+    <vehicle model="bullet" price="1000000"></vehicle>
+    <vehicle model="caddy" price="5600"></vehicle>
+    <vehicle model="cheetah" price="1100000"></vehicle>
+    <vehicle model="club" price="60000"></vehicle>
+    <vehicle model="comet" price="700000"></vehicle>
+    <vehicle model="elegant" price="45200"></vehicle>
+    <vehicle model="elegy" price="70200"></vehicle>
+    <vehicle model="emperor" price="35150"></vehicle>
+    <vehicle model="esperanto" price="32000"></vehicle>
+    <vehicle model="euros" price="770000"></vehicle>
+    <vehicle model="fcr-900" price="2700"></vehicle>
+    <vehicle model="faggio" price="1220"></vehicle>
+    <vehicle model="feltzer" price="52000"></vehicle>
+    <vehicle model="flash" price="61000"></vehicle>
+    <vehicle model="fortune" price="43200"></vehicle>
+    <vehicle model="freeway" price="12000"></vehicle>
+    <vehicle model="greenwood" price="40200"></vehicle>
+    <vehicle model="hotknife" price="800000"></vehicle>
+    <vehicle model="hotring racer" price="2000000"></vehicle>
+    <vehicle model="huntley" price="82000"></vehicle>
+    <vehicle model="hustler" price="100100"></vehicle>
+    <vehicle model="infernus" price="1300000"></vehicle>
+    <vehicle model="intruder" price="52000"></vehicle>
+    <vehicle model="jester" price="700000"></vehicle>
+    <vehicle model="kart" price="4700"></vehicle>
+    <vehicle model="landstalker" price="75000"></vehicle>
+    <vehicle model="manana" price="48000"></vehicle>
+    <vehicle model="merit" price="79200"></vehicle>
+    <vehicle model="mesa" price="60200"></vehicle>
+    <vehicle model="monster 1" price="120000"></vehicle>
+    <vehicle model="monster 2" price="130000"></vehicle>
+    <vehicle model="monster 3" price="130000"></vehicle>
+    <vehicle model="mountain bike" price="699"></vehicle>
+    <vehicle model="mower" price="2300"></vehicle>
+    <vehicle model="nrg-500" price="1000000"></vehicle>
+    <vehicle model="nebula" price="49999"></vehicle>
+    <vehicle model="oceanic" price="36200"></vehicle>
+    <vehicle model="pcj-600" price="96000"></vehicle>
+    <vehicle model="perennial" price="59300"></vehicle>
+    <vehicle model="phoenix" price="660000"></vehicle>
+    <vehicle model="picador" price="72000"></vehicle>
+    <vehicle model="premier" price="44230"></vehicle>
+    <vehicle model="previon" price="39200"></vehicle>
+    <vehicle model="primo" price="41200"></vehicle>
+    <vehicle model="quadbike" price="12000"></vehicle>
+    <vehicle model="rancher" price="90200"></vehicle>
+    <vehicle model="rancher lure" price="101000"></vehicle>
+    <vehicle model="regina" price="60000"></vehicle>
+    <vehicle model="savanna" price="52000"></vehicle>
+    <vehicle model="slamvan" price="71000"></vehicle>
+    <vehicle model="stafford" price="82000"></vehicle>
+    <vehicle model="stratum" price="60200"></vehicle>
+    <vehicle model="stretch" price="100200"></vehicle>
+    <vehicle model="sultan" price="96000"></vehicle>
+    <vehicle model="sunrise" price="56200"></vehicle>
+    <vehicle model="super gt" price="1050000"></vehicle>
+    <vehicle model="sweeper" price="1000000"></vehicle>
+    <vehicle model="tahoma" price="42200"></vehicle>
+    <vehicle model="taxi" price="44500"></vehicle>
+    <vehicle model="towtruck" price="92300"></vehicle>
+    <vehicle model="tractor" price="17500"></vehicle>
+    <vehicle model="turismo" price="1340000"></vehicle>
+    <vehicle model="uranus" price="93000"></vehicle>
+    <vehicle model="vincent" price="45000"></vehicle>
+    <vehicle model="voodoo" price="452000"></vehicle>
+    <vehicle model="washington" price="41500"></vehicle>
+    <vehicle model="willard" price="49200"></vehicle>
+    <vehicle model="windsor" price="800000"></vehicle>
+    <vehicle model="yosemite" price="99000"></vehicle>
+    <vehicle model="zr-350" price="730000"></vehicle>
+</VehiclePrice>
