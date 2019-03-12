@@ -1,11 +1,11 @@
 <meta>
-	<info author="mmicha" type="script" name="vehicle" />
-	<script src="c_vehicle.lua" type="client" cache="false" />
-	<script src="s_vehicle.lua" type="server" />
-	<script src="s_streetVehicles.lua" type="server" />
-
-
-	<settings>
-    	<setting name="*vPP" value="4" friendlyname="Vehicles Per Player" group="PersonalVehicle" accept="1-5" examples="" desc="" />
-	</settings>
+  <info author="mmicha" type="script" name="vehicle"/>
+  <script src="c_vehicle.lua" type="client" cache="false"/>
+  <script src="s_vehicle.lua" type="server"/>
+  <script src="s_streetVehicles.lua" type="server"/>
+  <script src="s_vehicleShop.lua" type="client"/>
+  
+  <settings>
+    <setting name="*vPP" value="4" friendlyname="Vehicles Per Player" group="PersonalVehicle" accept="1-5" examples="" desc=""/>
+  </settings>
 </meta>
