@@ -1,6 +1,0 @@
-<meta>
-    <info type="map" author="kkristi" version="3.3.0" />
-    <map src="Los-Angeles-City-Couty.map"/>
-    <script src="mapEditorScriptingExtension_s.lua" type="server"/>
-    <script src="mapEditorScriptingExtension_c.lua" type="client"/>
-</meta>
