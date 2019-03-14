@@ -28,7 +28,7 @@ function showVehicleShopGUI(forceStop)
         showCursor(true)
         guiSetInputEnabled(true)
         setPlayerHudComponentVisible("all", false)
-        showChat(false)
+        --showChat(false)
     end, 200, 1)
 
 
@@ -94,9 +94,9 @@ function showVehicleShopGUI(forceStop)
             end
             vehicle = createVehicle(getVehicleModelFromName(selected), 545, -1280, 17.5, 0, 0, 0) --last value
             setElementFrozen(vehicle, true)
-    
+
             local handling = getVehicleHandling(vehicle)
-    
+            outputConsole(toJSON(handling))
             guiSetText(vehicle_createVehicleWindow.label.price, "Price: "..guiGridListGetItemText(vehicle_createVehicleWindow.gridlist.vehicles, r, c+1).."$")
             guiSetText(vehicle_createVehicleWindow.label.speed, "Max. Speed: "..handling["maxVelocity"])
             guiSetText(vehicle_createVehicleWindow.label.accel, "Acceleration: "..handling["engineAcceleration"])
@@ -164,8 +164,10 @@ end
 
 
 function updateVehicleShopGUI(maxV, myV)
-	guiSetText(vehicle_createVehicleWindow.label.money, "Money: "..getPlayerMoney(localPlayer).."$")
-	guiSetText(vehicle_createVehicleWindow.label.slots, "Slots: "..myV.." out of "..maxV.." are in use")
+    showVehicleShopGUI(true)
+	maxVehicle = maxV
+    myVehicle = myV
+    showVehicleShopGUI(false)
 end
 addEvent("vehicle_updateVehicleShopGUI", true)
 addEventHandler("vehicle_updateVehicleShopGUI", root, updateVehicleShopGUI)

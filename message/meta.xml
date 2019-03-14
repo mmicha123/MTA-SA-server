@@ -3,7 +3,7 @@
 	<include resource="common" />
 	
 	<script src="s_message.lua" />
-	<script src="c_message.lua" type="client" />
+	<script src="c_message.lua" type="client" cache="false"/>
 
 	<export function="createMessage" type="shared" />
 	<export function="createMessageGlobal" />

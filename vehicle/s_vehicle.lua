@@ -125,37 +125,27 @@ function checkVehiclePerPlayer(id)
     return count[1]["Count(*)"]
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -----TEST-----
 function testVehicle()
     local testVeh = createVehicle(596, 1205, -1363, 13.7, 0, 0, 0, "test")
-    setVehicleHandling (testVeh, "maxVelocity", 185)
-    setVehicleHandling (testVeh, "engineAcceleration", 11)
-    setVehicleHandling (testVeh, "dragCoeff", 0.5)
-    setVehicleHandling (testVeh, "tractionMultiplier", 0.5)
-    setVehicleHandling (testVeh, "tractionLoss", 1.1)
-    setVehicleHandling (testVeh, "mass", 2000)
+
+    setVehicleHandling (testVeh, "engineInertia", 5)
+    setVehicleHandling (testVeh, "collisionDamageMultiplier", 0.5)
+    setVehicleHandling (testVeh, "dragCoeff", 2)
+    setVehicleHandling (testVeh, "turnMass", 4000)
+    setVehicleHandling (testVeh, "brakeBias", 0.449999988079071)
+    setVehicleHandling (testVeh, "tractionLoss", 0.899)
+    setVehicleHandling (testVeh, "monetary", 35000)
+    setVehicleHandling (testVeh, "tractionBias", 0.5)
+    setVehicleHandling (testVeh, "numberOfGears", 5)
+    setVehicleHandling (testVeh, "engineAcceleration", 11.19)
+    setVehicleHandling (testVeh, "maxVelocity", 200)
+    setVehicleHandling (testVeh, "mass", 1500)
+    setVehicleHandling (testVeh, "brakeDeceleration", 11)
+    setVehicleHandling (testVeh, "driveType", "rwd")
+    setVehicleHandling (testVeh, "tractionMultiplier", 0.699)
     --setVehicleHandling (testVeh, "engineType", "electric")
+
     local testPed = createPed(100,  1210, -1363, 13.7)
     toggleVehicleRespawn(testVeh, true)
     setVehicleIdleRespawnDelay(testVeh, 4000)

@@ -1,8 +1,8 @@
 <meta>
   <info author="mmicha" type="script" name="account"/>
-  <script src="c_charCreator.lua" type="client" />
+  <script src="c_charCreator.lua" type="client" cache="false"/>
   <script src="s_account.lua" type="server"/>
-  <script src="c_login.lua" type="client"/>
+  <script src="c_login.lua" type="client" cache="false"/>
 
 
   <file src="gfx/img/wallpaper.png" />

@@ -48,6 +48,7 @@ function buyVehicle(thePlayer, modelV, colorV)
     if(checkVehiclePerPlayer(getElementData(thePlayer, "ssE.accID")) >= maxVehicles) then
         exports.message:createMessage(thePlayer, "You don't have enough Vehicle Slots", 1, 5000)
         exports.message:createMessage(thePlayer, "Buy Promium or Sell some Vehicles", 3, 5000)
+        triggerClientEvent(thePlayer, "vehicle_updateVehicleShopGUI", thePlayer, get("vPP"), checkVehiclePerPlayer(getElementData(thePlayer, "ssE.accID")))
         return
     end
 
@@ -70,8 +71,9 @@ function buyVehicle(thePlayer, modelV, colorV)
     xmlUnloadFile(xml_File)
 
     if(price > getPlayerMoney(thePlayer)) then
-        return
         exports.message:createMessage(thePlayer, "You don't have enough Money", 1, 4000)
+        triggerClientEvent(thePlayer, "vehicle_updateVehicleShopGUI", thePlayer, get("vPP"), checkVehiclePerPlayer(getElementData(thePlayer, "ssE.accID")))
+        return
     end
 
     local isVehicle = addVehicle(thePlayer, {model = modelV, color = colorV})
