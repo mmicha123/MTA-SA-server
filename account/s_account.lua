@@ -155,6 +155,8 @@ function loadPlayerBaseData(thePlayer, userData)
     local acc = getPlayerAccount(thePlayer)
     if(acc and not isGuestAccount(acc)) then
 
+        setElementData(thePlayer, "ssE.accID", tonumber(getAccountID(acc)))
+
         ---Weapons and Ammo
         for i = 0, 12 do
             local weapon = getAccountData(acc, "ss.weaponType"..tostring(i))

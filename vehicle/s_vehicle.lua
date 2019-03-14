@@ -1,5 +1,4 @@
 
-
 ---------VEHICLE DATABASE-----
 dbC = nil
 
@@ -39,7 +38,7 @@ function addVehicle(thePlayer, vehicle)
     if(not acc or isGuestAccount(acc)) then return false end
 
     local vpp = checkVehiclePerPlayer(getAccountID(acc)) 
-    if(not vpp or vpp >= get("vPP")) then return false end
+    if(not vpp or vpp >= tonumber(get("vPP"))) then return false end
 
     local idTuning = addTuning()
     if(not idTuning) then return false end
