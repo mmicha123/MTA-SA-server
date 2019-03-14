@@ -13,14 +13,29 @@ function createVehicleShop()
             return
         end
 
-        if(not isPedInVehicle(hitElement)) then
+        if(isPedInVehicle(hitElement)) then
             exports.message:createMessage(hitElement, "Please enter on foot", 3, 3000)
             return
         end
 
-        triggerClientEvent(hitElement, "vehicle_showVehicleShopGUI", hitElement)
+        local acc = getPlayerAccount(hitElement)
+        if(not acc or isGuestAccount(acc)) then
+            return 
+        end
+
+        triggerClientEvent(hitElement, "vehicle_showVehicleShopGUI", hitElement, get("vPP"), checkVehiclePerPlayer(getAccountID(acc)))
     end
     addEventHandler("onMarkerHit", vehicleShopMarker, vehicleShopMarkerHit)
 
 end
 addEventHandler("onResourceStart", resourceRoot, createVehicleShop)
+
+
+function buyVehicle(thePlayer, model, color)
+    outputChatBox(model)
+    outputChatBox(color)
+
+    
+end
+addEvent("vehicle_buyVehicle", true)
+addEventHandler("vehicle_buyVehicle", getRootElement(), buyVehicle)

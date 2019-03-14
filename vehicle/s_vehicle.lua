@@ -38,7 +38,7 @@ function addVehicle(thePlayer, vehicle)
     local acc = getPlayerAccount(thePlayer)
     if(not acc or isGuestAccount(acc)) then return false end
 
-    local vpp = checkVehiclePerPlayer(getAccountID(acc))
+    local vpp = checkVehiclePerPlayer(getAccountID(acc)) 
     if(not vpp or vpp >= get("vPP")) then return false end
 
     local idTuning = addTuning()
@@ -96,7 +96,7 @@ function getVehicle(idVehicle)
     if(idVehicle) then
         local qH = dbQuery(dbC, "SELECT model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_vehicle = ?", idVehicle)
         local result = dbPoll(qH, 10)
-        if(result) then 
+        if(result) then
             return result
         else 
             dbFree(qH) 
@@ -114,7 +114,6 @@ function getVehicle(idVehicle)
     return false
 end
 
-
 function checkVehiclePerPlayer(id)
     if(not id) then return false end
 
@@ -124,8 +123,7 @@ function checkVehiclePerPlayer(id)
         dbFree(qH) 
         return false 
     end
-
-    return count[1]
+    return count[1]["Count(*)"]
 end
 
 
