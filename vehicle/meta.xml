@@ -1,18 +1,14 @@
 <meta>
   <info author="mmicha" type="script" name="vehicle"/>
-  
   <include resource="cpicker"/>
-
-
   <script src="c_vehicle.lua" type="client" cache="false"/>
   <script src="s_vehicle.lua" type="server"/>
   <script src="s_streetVehicles.lua" type="server"/>
   <script src="s_vehicleShop.lua" type="server"/>
   <script src="s_vehicleGarage.lua" type="server"/>
   <script src="c_vehicleShop.lua" type="client" cache="false"/>
-
-  <file src="xml/vehiclePriceC.xml" download="true"/>
   
+  <file src="xml/vehiclePriceC.xml" download="true"/>
   <settings>
     <setting name="*vPP" value="4" friendlyname="Vehicles Per Player" group="PersonalVehicle" accept="1-5" examples="" desc=""/>
   </settings>

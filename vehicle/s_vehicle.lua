@@ -91,20 +91,25 @@ function updateTuning(idVehicle, tuning)
 end
 
 ---vehicle RETURN vehicle/vehicles
-function getVehicle(idVehicle)
-    if(idVehicle) then
-        local qH = dbQuery(dbC, "SELECT model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_vehicle = ?", idVehicle)
+function getVehicle(thePlayer, idVehicle)
+    if(thePlayer) then
+        local acc = getPlayerAccount(thePlayer)
+        if(not acc or isGuestAccount(acc)) then return false end
+
+        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_owner = ?;", getAccountID(acc))
         local result = dbPoll(qH, 10)
-        if(result) then
+        if(result) then 
             return result
         else 
             dbFree(qH) 
         end
-    else
-        local qH = dbQuery(dbC, "SELECT model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning")
+    end
+
+    if(idVehicle) then
+        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_vehicle = ?", idVehicle)
         local result = dbPoll(qH, 10)
-        if(result) then 
-            return result
+        if(result) then
+            return result[1]
         else 
             dbFree(qH) 
         end

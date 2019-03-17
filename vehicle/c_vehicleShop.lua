@@ -96,7 +96,7 @@ function showVehicleShopGUI(forceStop)
             setElementFrozen(vehicle, true)
 
             local handling = getVehicleHandling(vehicle)
-            outputConsole(toJSON(handling))
+            --outputConsole(toJSON(handling))
             guiSetText(vehicle_createVehicleWindow.label.price, "Price: "..guiGridListGetItemText(vehicle_createVehicleWindow.gridlist.vehicles, r, c+1).."$")
             guiSetText(vehicle_createVehicleWindow.label.speed, "Max. Speed: "..handling["maxVelocity"])
             guiSetText(vehicle_createVehicleWindow.label.accel, "Acceleration: "..handling["engineAcceleration"])

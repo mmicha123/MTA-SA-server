@@ -32,8 +32,8 @@ addEventHandler("onResourceStart", resourceRoot, createVehicleShop)
 
 
 function buyVehicle(thePlayer, modelV, colorV)
-    outputChatBox(modelV)
-    outputChatBox(colorV)
+    --outputChatBox(modelV)
+    --outputChatBox(colorV)
     if not (modelV and colorV) then 
         return 
     end
