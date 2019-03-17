@@ -223,8 +223,19 @@ function vehicleCreate(thePlayer, dataV, i)
     setVehicleColor(v, color[1], color[2], color[3], color[4], color[5], color[6], color[7], color[8], color[9], color[10], color[11], color[12])
     setVehiclePlateText(v, getPlayerName(thePlayer))
 
-     ----TODO applay Tuning (addVehicleUpgrade) check for if tuning available
+    ----TODO applay Tuning (addVehicleUpgrade) check for if tuning available
+    --outputDebugString(toJSON(dataV))
+    
+    if(dataV.tuning ~= "nya") then
+        outputDebugString(dataV.tuning)
 
+        local tuning = fromJSON(dataV.tuning)
+
+        for _, upgrade in pairs(tuning) do
+            addVehicleUpgrade(v, upgrade)
+        end
+    end
+    
     return v
 end
 
@@ -254,7 +265,7 @@ end
 
 ----CMDs
 
-
+------USE /cc to spawn Vehicle
 function vehicleSpawn(thePlayer, cmd)
     local x, y, z = getElementPosition(thePlayer)
     local rx, ry, rz = getElementRotation(thePlayer)
@@ -286,12 +297,13 @@ function vehicleSpawn(thePlayer, cmd)
         exports.message:createMessage(thePlayer, "new Vehicle will be created", 2, 3000)
         data = getVehicle(false, vehicleID)
         vehicle = vehicleCreate(thePlayer, data)
+        setElementPosition(vehicle, x + 1, y, z + 0.5)
         return
     end
 end
 addCommandHandler("cc", vehicleSpawn)
 
-
+---testing
 function tpPlayer(thePlayer, cmd)
     setElementPosition(thePlayer, 2522, -1786, 13.5, false)
     setElementDimension(thePlayer, 0)
