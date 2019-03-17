@@ -99,10 +99,6 @@ addEventHandler("onPlayerLogout", getRootElement(), onLeave)
 
 
 
-
-
-
-
 function savePlayerBaseData(thePlayer, pos)
     local acc = getPlayerAccount(thePlayer)
     if(acc and not isGuestAccount(acc)) then
@@ -157,6 +153,13 @@ function loadPlayerBaseData(thePlayer, userData)
 
         setElementData(thePlayer, "ssE.accID", tonumber(getAccountID(acc)))
 
+        ---vehicle Datat
+
+        local vehicleID = getAccountData(acc, "ss.vehicleMain")
+        if(vehicleID) then
+            setElementData(thePlayer, "ssE.vehicleMain", tonumber(vehicleID))
+        end
+
         ---Weapons and Ammo
         for i = 0, 12 do
             local weapon = getAccountData(acc, "ss.weaponType"..tostring(i))
@@ -208,6 +211,18 @@ function loadPlayerBaseData(thePlayer, userData)
     end
 
     return data
+end
+
+
+function savePlayerVehicleData(thePlayer, vehicleID)
+    if(not vehicleID) then return false end
+    local acc = getPlayerAccount(thePlayer)
+    if(acc and not isGuestAccount(acc)) then
+        setAccountData(acc, "ss.vehicleMain", vehicleID)
+        return true
+    else 
+        return false
+    end
 end
 
 

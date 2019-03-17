@@ -18,5 +18,6 @@
   <export function="isAdmin" />
   <export function="loadPlayerBaseData" />
   <export function="savePlayerBaseData" />
+  <export function="savePlayerVehicleData" />
 
 </meta>

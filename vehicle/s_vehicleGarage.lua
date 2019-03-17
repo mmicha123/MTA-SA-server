@@ -156,8 +156,10 @@ function createVehicleGarageInterior(thePlayer, dim)
             setElementPosition(hitElement, 2515, -1783, 15.5, true)
             setElementRotation(hitElement, 0, 0, 270)
             setElementData(hitElement, "ssE.owner", getPlayerName(thePlayer))
-            outputDebugString(getElementData(hitElement, "ssE.ID_vehicle"))
-            setElementData(thePlayer, "ssE.vehicleMain", getElementData(hitElement, "ssE.ID_Vehicle"))
+            local vehicleID = getElementData(hitElement, "ssE.ID_Vehicle")
+            setElementData(thePlayer, "ssE.vehicleMain", vehicleID)
+
+            exports.account:savePlayerVehicleData(thePlayer, vehicleID)
 
             setElementDimension(hitElement, 0)
             setElementInterior(hitElement, 0)
