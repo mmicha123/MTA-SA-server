@@ -7,11 +7,9 @@
 
 
   
-  <!--
   <map src="map/Los-Angeles-City-Couty.map"/>
   <script src="map/mapEditorScriptingExtension_s.lua" type="server"/>
   <script src="map/mapEditorScriptingExtension_c.lua" type="client"/>
-  -->
 
 
   <settings>

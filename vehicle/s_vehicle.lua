@@ -159,3 +159,12 @@ function testVehicle()
     setVehicleFuelTankExplodable(testVeh, true)
 end
 addEventHandler("onResourceStart", resourceRoot, testVehicle)
+
+
+
+
+function vehicleTesting(thePlayer, cmd, garage)
+    -- 8, 12, BSN 11, 47 county, BSN Tuning 10, 7 willowfield
+    setGarageOpen(garage, true)
+end
+addCommandHandler("garage", vehicleTesting)

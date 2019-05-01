@@ -254,6 +254,8 @@ function vehicleDeployed(thePlayer)
             end
 
             if(isVehicleBlown(v)) then
+                setElementData(v, "ssE.owner", false)
+                destroyElement(v)
                 return false, false
             end
             return v, false
@@ -298,6 +300,7 @@ function vehicleSpawn(thePlayer, cmd)
         data = getVehicle(false, vehicleID)
         vehicle = vehicleCreate(thePlayer, data)
         setElementPosition(vehicle, x + 1, y, z + 0.5)
+        setElementData(vehicle, "ssE.owner", getPlayerName(thePlayer))
         return
     end
 end
