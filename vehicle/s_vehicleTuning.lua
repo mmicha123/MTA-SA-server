@@ -4,12 +4,6 @@
 ---https://wiki.multitheftauto.com/wiki/Vehicle_Upgrades
 
 
-
-
-
-
-
-
 function createTuningShop()
     local tuningShopMarker = createMarker(552, -1281, 16, 'cylinder', 2.0, 119, 109, 255, 150)
     local tuningShopBlip = createBlipAttachedTo(tuningShopMarker, 42) 
@@ -27,7 +21,7 @@ function createTuningShop()
         thePlayer = getVehicleOccupant(hitElement, 0)
 
         local vehicleOwner = getElementData(hitElement, "ssE.owner")
-        
+
         if(getPlayerName(thePlayer) == vehicleOwner) then
             for seat, occupant in pairs(getVehicleOccupants(hitElement)) do
                 removePedFromVehicle(occupant)

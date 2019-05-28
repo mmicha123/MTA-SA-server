@@ -8,8 +8,10 @@
   <script src="s_vehicleShop.lua" type="server"/>
   <script src="s_vehicleGarage.lua" type="server"/>
   <script src="s_vehicleTuning.lua" type="server"/>
-
+  
+	
   <script src="s_streetVehicles.lua" type="server"/>
+  <script src="s_payNspray.lua" type="server"/>
 
 
   <file src="xml/vehiclePriceC.xml" download="true"/>
