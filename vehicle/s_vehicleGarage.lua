@@ -45,8 +45,11 @@ function createVehicleGarage()
                 setElementData(hitElement, "ssE.owner", false)
                 destroyElement(hitElement)
             end
+            removePedFromVehicle(thePlayer)
 
-            setElementPosition(thePlayer, 1401, -26, 1001, false)
+            setTimer(function()
+                setElementPosition(thePlayer, 1401, -26, 1001, false)
+            end, 500, 1)
         else 
             return 
         end

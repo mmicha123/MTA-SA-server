@@ -47,7 +47,7 @@ local spawn = {
 
 function onLogin(_, acc)
     if not source then return end
-    if(tonumber(getAccountData(acc, "ss.firstTime")) <= 0) then
+    if(not getAccountData(acc, "ss.firstTime")) then 
         fadeCamera(source, true)
         triggerClientEvent(source, "account_showCharGUI", getRootElement())
         setAccountData(acc, "ss.firstTime", "1")
