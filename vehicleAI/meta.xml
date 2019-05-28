@@ -1,0 +1,5 @@
+<meta>
+	<info author="mmicha" type="script" name="vehicleAI" />
+	<script src="c_vehicleAI.lua" type="client" cache="false" />
+	<script src="s_vehicleAI.lua" type="server" />
+</meta>
