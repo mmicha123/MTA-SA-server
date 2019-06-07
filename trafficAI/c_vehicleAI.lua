@@ -1,7 +1,7 @@
 --[[
-    give special car (424) 
-        limit speed and 
-        make user notice that he is tracked
+#    give special car (424) 
+#        limit speed and 
+#        make user notice that he is tracked
     track car not player!
     track pos in nodes
     every interval check for damage if damage delete all nodes
@@ -20,55 +20,82 @@
             search simular nodes no 
 ]]
 
+local NODES = {}
 
+local nodeIDcounter = 1
+local nodesToDelete = 10
+local nodeSaveInterval = 1000 -- in ms
 
-local updateInterval = 500
-local uploadInterval = 5000
+local nodeUnloadInterval = 60000 -- every minute local
 
+local vehicle = nil
 
-local pos = {}
+local updateLast = 0
 
-function init()
-    updateLast = getTickCount()
-    gLabel = guiCreateLabel(598, 158, 154 , 25, "tracking movement", false)
-    --setVehicleHandling(theVehicle, "maxVelocity", 40)
-end
-addEventHandler("onClientResourceStart", getRootElement(), init)
+local debugShowLast = 10
+local gLable = guiCreateLabel(910, 200, 154 , 100, "tracking movement", false)
+guiSetVisible(gLable, false)
 
-
-
-function trackVehicleMovement()
-    local theVehicle = getPedOccupiedVehicle(getLocalPlayer())
-    if( not theVehicle) then
+function startTracking(v)
+    if(not v) then
         return
     end
 
-    if(((getTickCount() - updateLast) >= updateInterval)) then
-        
-        calcSpeed(theVehicle)
-        local x, y, z = getElementPosition(getLocalPlayer())
-        local test = {x, y, z}
-        table.insert(pos, test)
+    vehicle = v
+    NODES.pName = getPlayerName(getLocalPlayer())
 
-        --outputChatBox(pos[#pos][1])
+    guiSetVisible(gLable, true)
+
+    updateLast = getTickCount()
+
+    addEventHandler("onClientRender", getRootElement(), trackVehicleMovement)
+end
+addEvent("trafficAI_startTracking", true)
+addEventHandler("trafficAI_startTracking", root, startTracking)
+
+
+function stopTracking(vehicle)
+    removeEventHandler("onClientRender", getRootElement(), trackVehicleMovement)
+    guiSetVisible(gLable, false)
+end
+addEvent("trafficAI_stopTracking", true)
+addEventHandler("trafficAI_stopTracking", root, stopTracking)
+
+
+function trackVehicleMovement()
+
+    if(((getTickCount() - updateLast) >= nodeSaveInterval)) then
+        --check for crash and same pos and other errors
+        local NODE = {ID = 1, pos = {}, prevN = 0}
+        local vP = {}
+
+        vP.x, vP.y, vP.z = getElementPosition(vehicle)
+        NODE.ID = nodeIDcounter
+        NODE.pos = vP
+        NODE.prevN = nodeIDcounter - 1
+
+        NODES[nodeIDcounter] = NODE
+
+        nodeIDcounter = nodeIDcounter + 1
         updateLast = getTickCount()
     end
 
-
-    --debug draw lines
-    local oX, oY, oZ = 0, 0, 0
-
-    for _, p in pairs(pos) do 
-        dxDrawLine3D(oX, oY, oZ, p[1], p[2], p[3], 0xFFFFFFFF, 2, false)
-        oX, oY, oZ = p[1], p[2], p[3]
+    --darw line DEBUG
+    if(#NODES <= 1) then 
+        return
     end
 
-end
-addEventHandler("onClientRender", getRootElement(), trackVehicleMovement)
+    local showPoints = 1
 
-function calcSpeed(theVehicle)
-    local speedx, speedy, speedz = getElementVelocity(theVehicle)
-    local actualSpeed = (speedx^2 + speedy^2 + speedz^2) ^ (0.5) * 100 * 1.609344
-    outputChatBox(actualSpeed)
-    return actualSpeed
+    if(#NODES > debugShowLast) then
+        showPoints = #NODES - debugShowLast
+    end
+
+    for i = #NODES, showPoints, -1 do
+
+        local prevI = NODES[i].prevN
+
+        dxDrawLine3D(NODES[i].pos.x, NODES[i].pos.y, NODES[i].pos.z, NODES[prevI].pos.x, NODES[prevI].pos.y, NODES[prevI].pos.z, 0xFFFFFFFF, 2, false)
+    end
+
 end
