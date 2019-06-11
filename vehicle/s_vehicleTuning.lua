@@ -15,6 +15,7 @@ function createTuningShop()
 
     local function tuningShopMarkerHit(hitElement)
         if(getElementType(hitElement) ~= "vehicle") then
+            exports.message:createMessage(hitElement, "Please enter in owned Vehicle", 3, 3000)
             return
         end
 
@@ -28,9 +29,11 @@ function createTuningShop()
             end
             setElementData(hitElement, "ssE.owner", false)
             destroyElement(hitElement)
+        else
+            exports.message:createMessage(hitElement, "Please enter in owned Vehicle", 3, 3000)
         end
 
-        triggerClientEvent(hitElement, "vehicle_showTuningShopGUI", hitElement, get("vPP"), checkVehiclePerPlayer(getElementData(hitElement, "ssE.accID")))
+        triggerClientEvent(hitElement, "vehicle_showTuningShopGUI", hitElement)
     end
     addEventHandler("onMarkerHit", tuningShopMarker, tuningShopMarkerHit)
 end
