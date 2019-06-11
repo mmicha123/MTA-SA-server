@@ -26,7 +26,7 @@ function register(player, username, password)
         local account = addAccount(username, password, true)
         if(account) then
             exports.message:createMessage(player, "Register successful now login", 2, 2000)
-            setAccountData(account, "ss.firstTime", "0")
+            setAccountData(account, "ss.firstTime", 0)
         else
             exports.message:createMessage(player, "Register error", 1, 5000)
         end
@@ -47,14 +47,14 @@ local spawn = {
 
 function onLogin(_, acc)
     if not source then return end
-    if(not getAccountData(acc, "ss.firstTime")) then 
+    if(getAccountData(acc, "ss.firstTime") == 0) then 
         fadeCamera(source, true)
         triggerClientEvent(source, "account_showCharGUI", getRootElement())
         setAccountData(acc, "ss.firstTime", "1")
     else
         local data = loadPlayerBaseData(source, true)
 
-        if(data) then
+        if(data.x) then
             setElementData(source, "ssE.team", data.team)
 
             spawnPlayer(source, data.x, data.y, data.z, data.rot, data.skin, data.inte, data.dim)
