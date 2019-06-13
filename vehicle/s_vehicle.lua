@@ -87,7 +87,7 @@ end
 function updateTuning(idVehicle, tuning)
     if not(idVehicle or tuning) then return false end
 
-    return dbExec(dbC, "UPDATE t_tuning SET tuning = ? WHERE id_vehicle == ?", value, idVehicle)
+    return dbExec(dbC, "UPDATE t_tuning SET tuning = ? WHERE id_vehicle == ?", tuning, idVehicle)
 end
 
 ---vehicle RETURN vehicle/vehicles

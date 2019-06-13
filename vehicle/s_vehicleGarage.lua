@@ -38,7 +38,7 @@ function createVehicleGarage()
             thePlayer = getVehicleOccupant(hitElement, 0)
 
             local vehicleOwner = getElementData(hitElement, "ssE.owner")
-            if(getPlayerName(thePlayer) == vehicleOwner) then
+            if(getPlayerSerial(thePlayer) == vehicleOwner) then
                 for seat, occupant in pairs(getVehicleOccupants(hitElement)) do
                     removePedFromVehicle(occupant)
                 end
@@ -99,7 +99,7 @@ function createVehicleGarageInterior(thePlayer, dim)
         setElementInterior(createdVehicles[i], 1)
         setElementDimension(createdVehicles[i], dim)
 
-        setElementData(createdVehicles[i], "ssE.ID", data.id_owner)
+        setElementData(createdVehicles[i], "ssE.ID_Player", data.id_owner)
         setElementData(createdVehicles[i], "ssE.ID_Vehicle", data.id_vehicle)
 
     end
@@ -139,7 +139,7 @@ function createVehicleGarageInterior(thePlayer, dim)
                 return
             end
 
-            if(getElementData(hitElement, "ssE.ID") ~= (dim-1)) then
+            if(getElementData(hitElement, "ssE.ID_Player") ~= (dim-1)) then
                 return
             end
 
@@ -158,7 +158,7 @@ function createVehicleGarageInterior(thePlayer, dim)
             removePedFromVehicle(thePlayer)
             setElementPosition(hitElement, 2515, -1783, 15.5, true)
             setElementRotation(hitElement, 0, 0, 270)
-            setElementData(hitElement, "ssE.owner", getPlayerName(thePlayer))
+            setElementData(hitElement, "ssE.owner", getPlayerSerial(thePlayer))
             local vehicleID = getElementData(hitElement, "ssE.ID_Vehicle")
             setElementData(thePlayer, "ssE.vehicleMain", vehicleID)
 
@@ -201,7 +201,7 @@ function createVehicleGarageInterior(thePlayer, dim)
         for _, cV in pairs(createdVehicles) do
             if(cV) then 
                 if(getElementDimension(cV) == dim) then 
-                    setElementData(cV, "ssE.ID", false)
+                    setElementData(cV, "ssE.ID_Player", false)
                     --setElementData(cV, "ssE.ID_vehicle", false)
                     destroyElement(cV) 
                 end
@@ -247,7 +247,7 @@ end
 function vehicleDeployed(thePlayer)
     local vehicles =  getElementsByType("vehicle")
     for _, v in pairs(vehicles) do
-        if(getElementData(v, "ssE.owner") == getPlayerName(thePlayer)) then 
+        if(getElementData(v, "ssE.owner") == getPlayerSerial(thePlayer)) then 
             local counter = 0
             for _, occupant in pairs(getVehicleOccupants(v)) do
                 counter = counter + 1
@@ -303,7 +303,7 @@ function vehicleSpawn(thePlayer, cmd)
         data = getVehicle(false, vehicleID)
         vehicle = vehicleCreate(thePlayer, data)
         setElementPosition(vehicle, x + 1, y, z + 0.5)
-        setElementData(vehicle, "ssE.owner", getPlayerName(thePlayer))
+        setElementData(vehicle, "ssE.owner", getPlayerSerial(thePlayer))
         return
     end
 end

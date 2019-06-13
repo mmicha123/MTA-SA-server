@@ -5,7 +5,7 @@
 
 
 function createTuningShop()
-    local tuningShopMarker = createMarker(552, -1281, 16, 'cylinder', 2.0, 119, 109, 255, 150)
+    local tuningShopMarker = createMarker(564, -1278, 16, 'cylinder', 2.0, 119, 109, 255, 150)
     local tuningShopBlip = createBlipAttachedTo(tuningShopMarker, 42) 
 	setBlipVisibleDistance(tuningShopBlip, 250)
 	setElementInterior(tuningShopMarker, 0)
@@ -22,19 +22,46 @@ function createTuningShop()
         thePlayer = getVehicleOccupant(hitElement, 0)
 
         local vehicleOwner = getElementData(hitElement, "ssE.owner")
+        outputChatBox(vehicleOwner)
 
-        if(getPlayerName(thePlayer) == vehicleOwner) then
+        if(getPlayerSerial(thePlayer) == vehicleOwner) then
             for seat, occupant in pairs(getVehicleOccupants(hitElement)) do
                 removePedFromVehicle(occupant)
             end
-            setElementData(hitElement, "ssE.owner", false)
-            destroyElement(hitElement)
+            --setElementData(hitElement, "ssE.owner", false)
+            --destroyElement(hitElement)
+
+            --position change and move camera--
         else
             exports.message:createMessage(hitElement, "Please enter in owned Vehicle", 3, 3000)
         end
+
+        --setElementData(thePlayer, "ssE.vehicleMain", vehicleID) id im player match suchen aka index für datenbank
+        ---getElementData(hitElement, "ssE.ID_Vehicle") id im vehicle 
+
+
 
         triggerClientEvent(hitElement, "vehicle_showTuningShopGUI", hitElement)
     end
     addEventHandler("onMarkerHit", tuningShopMarker, tuningShopMarkerHit)
 end
 addEventHandler("onResourceStart", resourceRoot, createTuningShop)
+
+function applyAllTuning(tData)
+
+end
+addEvent("vehicle_applyTuning", true)
+addEventHandler("vehicle_applyTuning", getRootElement(), applyAllTuning)
+
+function saveTuning(tData)
+
+end
+addEvent("vehicle_saveTuning", true)
+addEventHandler("vehicle_saveTuning", getRootElement(), saveTuning)
+
+function addHandling(h)
+
+end
+
+--tuningData = {handling = {}, visual = {}}
+--HANDLING = {"name" = value}
