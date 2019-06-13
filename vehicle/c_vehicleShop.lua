@@ -28,6 +28,7 @@ function showVehicleShopGUI(forceStop)
         showCursor(true)
         guiSetInputEnabled(true)
         setPlayerHudComponentVisible("all", false)
+        setPlayerHudComponentVisible("money", true)
         --showChat(false)
     end, 200, 1)
 

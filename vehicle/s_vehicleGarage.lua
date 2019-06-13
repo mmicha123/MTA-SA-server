@@ -223,7 +223,7 @@ function vehicleCreate(thePlayer, dataV, i)
     if(not i) then i = 6 end
     local color = fromJSON(dataV.color)
     local v = createVehicle(dataV.model, vSpawns[i][1], vSpawns[i][2], vSpawns[i][3], vSpawns[i][4], vSpawns[i][5], vSpawns[i][6])
-    setVehicleColor(v, color[1], color[2], color[3], color[4], color[5], color[6], color[7], color[8], color[9], color[10], color[11], color[12])
+    setVehicleColor(v, color[1], color[2], color[3], color[4], color[5], color[6])
     setVehiclePlateText(v, getPlayerName(thePlayer))
 
     ----TODO applay Tuning (addVehicleUpgrade) check for if tuning available

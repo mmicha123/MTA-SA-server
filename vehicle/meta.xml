@@ -10,6 +10,9 @@
   <script src="s_streetVehicles.lua" type="server"/>
   <script src="s_payNspray.lua" type="server"/>
   <script src="c_vehicleTunning.lua" type="client"/>
+  
+  
+  
   <file src="xml/vehiclePriceC.xml" download="true"/>
   <settings>
     <setting name="*vPP" value="4" friendlyname="Vehicles Per Player" group="PersonalVehicle" accept="1-5" examples="" desc=""/>
