@@ -1,5 +1,5 @@
 local screenWidth, screenHeight = guiGetScreenSize()
-local windowSizeX, windowSizeY = 300, 250
+local windowSizeX, windowSizeY = 500, 350
 
 local tVW = {
     button = {},
@@ -118,38 +118,6 @@ function showVehicleTuningGUI(forceStop)
     end
     addEventHandler("onClientGUIClick", tVW.button.color2, color2)
 
-
-    addEventHandler("onClientGUIClick", tVW.button.tab1add, function()
-        if(not vehicle) then return end
-
-        local color = {}
-        color[1], color[2], color[3], color[4], color[5], color[6]= getVehicleColor(vehicle, true)
-
-        triggerServerEvent("vehicle_tuningSaveColor", getLocalPlayer(), getLocalPlayer(), toJSON(color))
-    end)
-
-    addEventHandler("onClientGUIClick", tVW.button.tab1remove, function()
-        if(not vehicle) then return end
-        --triggerServerEvent()
-    end)
-
-    addEventHandler("onClientGUIClick", tVW.button.tab2add, function()
-
-    end)
-
-    addEventHandler("onClientGUIClick", tVW.button.tab2remove, function()
-        
-    end)
-
-    addEventHandler("onClientGUIClick", tVW.button.tab3add, function()
-
-    end)
-
-    addEventHandler("onClientGUIClick", tVW.button.tab3remove, function()
-        
-    end)
-
-
 end
 
 function initShowTuningeShopGUI(playerVehicleData)
@@ -162,39 +130,3 @@ function initShowTuningeShopGUI(playerVehicleData)
 end
 addEvent("vehicle_showTuningShopGUI", true)
 addEventHandler("vehicle_showTuningShopGUI", root, initShowTuningeShopGUI)
-
-function setUpVehicle()
-
-end
-
---[[
-        GUIEditor.window[1] = guiCreateWindow(1192, 529, 301, 222, "", false)
-        guiWindowSetSizable(GUIEditor.window[1], false)
-
-        GUIEditor.tabpanel[1] = guiCreateTabPanel(10, 24, 233, 188, false, GUIEditor.window[1])
-
-        GUIEditor.tab[1] = guiCreateTab("Tab", GUIEditor.tabpanel[1])
-
-        GUIEditor.button[1] = guiCreateButton(10, 124, 97, 30, "", false, GUIEditor.tab[1])
-
-        GUIEditor.button[2] = guiCreateButton(126, 124, 97, 30, "", false, GUIEditor.tab[1])
-
-        GUIEditor.button[3] = guiCreateButton(13, 9, 210, 105, "COLOR", false, GUIEditor.tab[1])
-
-
-        GUIEditor.tab[2] = guiCreateTab("Performance", GUIEditor.tabpanel[1])
-
-        GUIEditor.button[4] = guiCreateButton(9, 128, 99, 26, "", false, GUIEditor.tab[2])
-        guiSetProperty(GUIEditor.button[4], "NormalTextColour", "FFAAAAAA")
-        GUIEditor.button[5] = guiCreateButton(124, 128, 99, 26, "", false, GUIEditor.tab[2])
-        guiSetProperty(GUIEditor.button[5], "NormalTextColour", "FFAAAAAA")
-        GUIEditor.radiobutton[1] = guiCreateRadioButton(15, 16, 192, 20, "1", false, GUIEditor.tab[2])
-        guiRadioButtonSetSelected(GUIEditor.radiobutton[1], true)
-        GUIEditor.radiobutton[2] = guiCreateRadioButton(15, 46, 192, 20, "2", false, GUIEditor.tab[2])
-        GUIEditor.radiobutton[3] = guiCreateRadioButton(15, 76, 192, 20, "2", false, GUIEditor.tab[2])
-
-        GUIEditor.tab[3] = guiCreateTab("Optical", GUIEditor.tabpanel[1])
-
-        GUIEditor.button[6] = guiCreateButton(249, 173, 42, 29, "EXIT", false, GUIEditor.window[1])
-        guiSetProperty(GUIEditor.button[6], "NormalTextColour", "FFAAAAAA")    
-]]

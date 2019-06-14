@@ -14,7 +14,7 @@ function init()
         local testVehicleTable = dbPoll(qH, 5)
         if(not testVehicleTable[1]) then
             outputDebugString("creating t_vehicle", 3)
-            dbExec(dbC, "CREATE TABLE t_vehicle(id_vehicle INTEGER PRIMARY KEY, id_owner INTEGER, id_tuning INTEGER, model INTEGER, color TEXT);")
+            dbExec(dbC, "CREATE TABLE t_vehicle(id_vehicle INTEGER PRIMARY KEY, id_owner INTEGER, id_tuning INTEGER, model INTEGER);")
         end
     end
 
@@ -24,7 +24,7 @@ function init()
         local testTuningTable = dbPoll(qH, 5)
         if(not testTuningTable[1]) then
             outputDebugString("creating t_tuning", 3)
-            dbExec(dbC, "CREATE TABLE t_tuning(id_tuning INTEGER PRIMARY KEY, tuning TEXT);")
+            dbExec(dbC, "CREATE TABLE t_tuning(id_tuning INTEGER PRIMARY KEY, performance TEXT, optical TEXT, color TEXT);")
         end
     end
 end
@@ -40,10 +40,10 @@ function addVehicle(thePlayer, vehicle)
     local vpp = checkVehiclePerPlayer(getAccountID(acc)) 
     if(not vpp or vpp >= tonumber(get("vPP"))) then return false end
 
-    local idTuning = addTuning()
+    local idTuning = addTuning(vehicle.color)
     if(not idTuning) then return false end
 
-    local qH = dbQuery(dbC, "INSERT INTO t_vehicle(id_owner, id_tuning, model, color) VALUES(?, ?, ?, ?);", getAccountID(acc), idTuning, vehicle.model, vehicle.color)
+    local qH = dbQuery(dbC, "INSERT INTO t_vehicle(id_owner, id_tuning, model) VALUES(?, ?, ?);", getAccountID(acc), idTuning, vehicle.model)
     
     local result, _, last_insert_id = dbPoll(qH, 10)
     if(result) then 
@@ -55,8 +55,8 @@ function addVehicle(thePlayer, vehicle)
     return false
 end
 
-function addTuning()
-    local qH = dbQuery(dbC, "INSERT INTO t_tuning(tuning) VALUES('nya')")
+function addTuning(color)
+    local qH = dbQuery(dbC, "INSERT INTO t_tuning(performance, optical, color) VALUES('nya', 'nya', ?)", color)
     local result, _, last_insert_id = dbPoll(qH, 10)
     if(result) then 
         return last_insert_id 
@@ -66,7 +66,7 @@ function addTuning()
     return false
 end
 
-function updateVehicle(idVehicle, cmd, value)
+function updateVehicle(idVehicle, cmd, value) -- überarbeiten
     if not(idVehicle or cmd) then return false end
     if(cmd == "delete") then
         dbExec(dbC, "DELETE FROM t_tuning WHERE id_Vehicle = ?", idVehicle)
@@ -75,9 +75,6 @@ function updateVehicle(idVehicle, cmd, value)
 
     if(not value) then return false end
 
-    if(cmd == "model") then
-        return dbExec(dbC, "UPDATE t_vehicle SET model = ? WHERE id_vehicle == ?", value, idVehicle)
-    end
     if(cmd == "color") then
         return dbExec(dbC, "UPDATE t_vehicle SET color = ? WHERE id_vehicle == ?", value, idVehicle)
     end
@@ -96,7 +93,7 @@ function getVehicle(thePlayer, idVehicle)
         local acc = getPlayerAccount(thePlayer)
         if(not acc or isGuestAccount(acc)) then return false end
 
-        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_owner = ?;", getAccountID(acc))
+        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, t_tuning.performance, t_tuning.optical, t_tuning.color FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_owner = ?;", getAccountID(acc))
         local result = dbPoll(qH, 10)
         if(result) then 
             return result
@@ -106,7 +103,7 @@ function getVehicle(thePlayer, idVehicle)
     end
 
     if(idVehicle) then
-        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, color, t_tuning.tuning FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_vehicle = ?", idVehicle)
+        local qH = dbQuery(dbC, "SELECT id_owner, id_vehicle, model, t_tuning.performance, t_tuning.optical, t_tuning.color FROM t_vehicle INNER JOIN t_tuning ON t_tuning.id_tuning = t_vehicle.id_tuning WHERE id_vehicle = ?", idVehicle)
         local result = dbPoll(qH, 10)
         if(result) then
             return result[1]

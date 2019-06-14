@@ -61,24 +61,6 @@ function createTuningShop()
 end
 addEventHandler("onResourceStart", resourceRoot, createTuningShop)
 
-function applyAllTuning(tData)
-
-end
-addEvent("vehicle_applyTuning", true)
-addEventHandler("vehicle_applyTuning", getRootElement(), applyAllTuning)
-
-function saveTuning(tData)
-
-end
-addEvent("vehicle_saveTuning", true)
-addEventHandler("vehicle_saveTuning", getRootElement(), saveTuning)
-
---tuningData = {handling = {}, visual = {}}
---HANDLING = {"name" = value}
-
-
-
-
 
 local function tuningSaveColor(thePlayer, color)
     local idVehicle = enteredMarkerData[thePlayer][3]
@@ -92,37 +74,4 @@ addEventHandler("vehicle_tuningSaveColor", getRootElement(), tuningSaveColor)
 
 
 --HELPER
-function applyTuning(vehicle, tuningD)
-    if(not tuningD or vehicle) then return end
-    
-    local perf = {}
-    if(tuningD.package == 1) then 
-        perf.accel = 2
-        perf.vel = 10
-        perf.iner = -10
-        perf.trMul = 0.05
-        perf.trLoss = 0.02
-        perf.bDec = 0.05
-        perf.bBia = 0.1
-    elseif(tuningD.package == 2) then 
-        perf.accel = 6
-        perf.vel = 20
-        perf.iner = -20
-        perf.trMul = 0.1
-        perf.trLoss = 0.03
-        perf.bDec = 0.1
-        perf.bBia = 0.175
-    elseif(tuningD.package == 3) then 
-        perf.accel = 8
-        perf.vel = 30
-        perf.iner = -30
-        perf.trMul = 0.15
-        perf.trLoss = 0.04
-        perf.bDec = 0.15
-        perf.bBia = 0.25
-    end
 
-    if(perf) then
-        
-    end
-end

@@ -2,15 +2,20 @@
   <info author="mmicha" type="script" name="vehicle"/>
   <include resource="cpicker"/>
   <script src="c_vehicle.lua" type="client" cache="false"/>
-  <script src="c_vehicleShop.lua" type="client" cache="false"/>
   <script src="s_vehicle.lua" type="server"/>
+  
+  <script src="c_vehicleShop.lua" type="client" cache="false"/>
   <script src="s_vehicleShop.lua" type="server"/>
+  
   <script src="s_vehicleGarage.lua" type="server"/>
+  
   <script src="s_vehicleTuning.lua" type="server"/>
-  <script src="s_streetVehicles.lua" type="server"/>
-  <script src="s_payNspray.lua" type="server"/>
   <script src="c_vehicleTunning.lua" type="client"/>
   
+  <script src="s_streetVehicles.lua" type="server"/>
+  <script src="s_payNspray.lua" type="server"/>
+  
+  <script src="g_vehicleTunning.lua" type="shared"/>
   
   
   <file src="xml/vehiclePriceC.xml" download="true"/>
