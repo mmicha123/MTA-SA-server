@@ -15,7 +15,7 @@
   <script src="s_streetVehicles.lua" type="server"/>
   <script src="s_payNspray.lua" type="server"/>
   
-  <script src="g_vehicleTunning.lua" type="shared"/>
+  <script src="g_vehicleTunning.lua" type="shared" cache="false" />
   
   
   <file src="xml/vehiclePriceC.xml" download="true"/>

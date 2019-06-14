@@ -91,6 +91,7 @@ function createVehicleGarageInterior(thePlayer, dim)
     local savedVehicles = getVehicle(thePlayer)
 
 
+
     for i, data in pairs(savedVehicles) do
         if(i > maxVehicles) then break end
 
@@ -219,26 +220,12 @@ end
 
 ---Helper
 
-function vehicleCreate(thePlayer, dataV, i)
+function vehicleCreate(thePlayer, daV, i)
     if(not i) then i = 6 end
-    local color = fromJSON(dataV.color)
-    local v = createVehicle(dataV.model, vSpawns[i][1], vSpawns[i][2], vSpawns[i][3], vSpawns[i][4], vSpawns[i][5], vSpawns[i][6])
-    setVehicleColor(v, color[1], color[2], color[3], color[4], color[5], color[6])
-    setVehiclePlateText(v, getPlayerName(thePlayer))
+    local v = createTuningVehicle(thePlayer, daV)
+    setElementPosition(v, vSpawns[i][1], vSpawns[i][2], vSpawns[i][3])
+    setElementRotation(v, vSpawns[i][4], vSpawns[i][5], vSpawns[i][6])
 
-    ----TODO applay Tuning (addVehicleUpgrade) check for if tuning available
-    --outputDebugString(toJSON(dataV))
-    
-    if(dataV.tuning ~= "nya") then
-        outputDebugString(dataV.tuning)
-
-        local tuning = fromJSON(dataV.tuning)
-
-        for _, upgrade in pairs(tuning) do
-            addVehicleUpgrade(v, upgrade)
-        end
-    end
-    
     return v
 end
 
@@ -301,7 +288,11 @@ function vehicleSpawn(thePlayer, cmd)
 
         exports.message:createMessage(thePlayer, "new Vehicle will be created", 2, 3000)
         data = getVehicle(false, vehicleID)
-        vehicle = vehicleCreate(thePlayer, data)
+        vehicle = createTuningVehicle(thePlayer, data)
+        if(not vehicle) then
+            exports.message:createMessage(thePlayer, "ERROR in DB please contact Admin", 1, 3000)
+            return
+        end
         setElementPosition(vehicle, x + 1, y, z + 0.5)
         setElementData(vehicle, "ssE.owner", getPlayerSerial(thePlayer))
         return
