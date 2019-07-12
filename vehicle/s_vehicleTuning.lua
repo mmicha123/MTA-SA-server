@@ -34,7 +34,7 @@ function createTuningShop()
             return
         end
 
-        local playerVehicleData = getVehicle(thePlayer, playerVehicleID)
+        local playerVehicleData = getVehicle(false, playerVehicleID)
         if(not playerVehicleData) then
             return
         end

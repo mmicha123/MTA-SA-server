@@ -1,3 +1,19 @@
+tuningParts = {
+    [1] = "Color 1",
+    [2] = "Color 2",
+    [3] = "Color 3",
+    [4] = "------",
+    [5] = "Motor",
+    [6] = "Turbo",
+    [7] = "Tires",
+    [8] = "Brakes",
+    [9] = "Mass",
+    [10] = "------",
+    [11] = "Clean",
+    [12] = "------"
+}
+
+
 function createTuningVehicle(thePlayer, vD)
     
     if(vD == nil or not thePlayer) then
@@ -14,15 +30,22 @@ function createTuningVehicle(thePlayer, vD)
 
     if(vD.performance ~= "nya") then
         local per = fromJSON(vD.performance)
-        applyTuningPerformance(vehcile, "motor", per[1], promium)
-        applyTuningPerformance(vehcile, "turbo", per[2], promium)
-        applyTuningPerformance(vehcile, "brakes", per[3], promium)
-        applyTuningPerformance(vehcile, "weight", per[4], promium)
+        applyTuningPerformance(vehcile, "motor", per.motor, promium)
+        applyTuningPerformance(vehcile, "turbo", per.turbo, promium)
+        applyTuningPerformance(vehcile, "tires", per.tires, promium)
+        applyTuningPerformance(vehcile, "brakes", per.brakes, promium)
+        applyTuningPerformance(vehcile, "mass", per.mass, promium)
     end
 
     if(vD.optical ~= "nya") then
         local opt = fromJSON(vD.optical)
-        applyTuningPerformance(vehcile, "clean", opt[17])
+        for _, u in ipairs(opt.upgrades) do
+            addVehicleUpgrade(vehicle, u)
+        end
+        
+        if(opt.clean) then
+            applyCleannes(vehicle)
+        end
     end
 
     return vehicle
@@ -105,7 +128,7 @@ function applyTuningPerformance(vehicle, cmd, data, promium)
         end
 
         return true
-    elseif(cmd == "weight") then
+    elseif(cmd == "mass") then
         local massO = getOriginalHandling(vehicle)["mass"]
         setVehicleHandling(vehicle, "mass", massO)
 
@@ -123,45 +146,6 @@ function applyTuningPerformance(vehicle, cmd, data, promium)
 
 end
 
-function applyTuningOptical(vehicle, cmd, data)
-    if(not (vehicle or cmd or data)) then
-        return 
-    end
+function applyCleannes(vehicle)
 
-    if(cmd == "clean") then
-
-    else 
-
-    end
 end
-
-
---[[
-    if(not i) then i = 6 end
-    local color = fromJSON(dataV.color)
-    local v = createVehicle(dataV.model, vSpawns[i][1], vSpawns[i][2], vSpawns[i][3], vSpawns[i][4], vSpawns[i][5], vSpawns[i][6])
-    setVehicleColor(v, color[1], color[2], color[3], color[4], color[5], color[6])
-    setVehiclePlateText(v, getPlayerName(thePlayer))
-
-    ----TODO applay Tuning (addVehicleUpgrade) check for if tuning available
-    --outputDebugString(toJSON(dataV))
-    
-    if(dataV.tuning ~= "nya") then
-        outputDebugString(dataV.tuning)
-
-        local tuning = fromJSON(dataV.tuning)
-
-        for _, upgrade in pairs(tuning) do
-            addVehicleUpgrade(v, upgrade)
-        end
-    end
-    
-    return v
-
-
-    {2472,-1785, 14, 0, 0, 0}
-
-
-    -----
-    "ssE.promiumUser" == ture or false
-]]
