@@ -1,4 +1,4 @@
-local resources = {"common", "message", "account", "realism", "stats", "vehicle"}
+local resources = {"common", "notify", "account", "realism", "stats", "vehicle"}
 
 addEventHandler( "onResourceStart", resourceRoot,
 	function( )

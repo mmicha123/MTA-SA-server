@@ -1,0 +1,15 @@
+<meta>
+    <info author="mmicha" description="A notification System" version="2.0" type="script"></info>
+    
+	<!-- SCRIPTS -->
+	<script src="c_.lua" type="client" cache="false" />
+	<script src="s_.lua" type="server"/>
+	
+	<!-- HTML -->
+	<file src="web/index.html" />
+	
+	<!-- FILES -->
+	
+	<!-- Exports -->
+	
+</meta>
