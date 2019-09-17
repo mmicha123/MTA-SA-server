@@ -1,42 +1,43 @@
 local screenWidth, screenHeight = guiGetScreenSize()
+local browserSizeX, browserSizeY = 300, 700
 
-local indexHTML = "http://mta/local/web/index.html"
-local webBrowser = nil
+local indexHTML = "http://mta/local/web/index.html" --"http://mta/local/web/index.html"
+local webBrowser = nil 
 
 ---if created from server part
 local function showWebView(forceClose)
 	if(webBrowser ~= nil and forceClose) then
 		destroyElement(webBrowser)
-		showCursor(false)
+		--showCursor(false)
 	end
 
-	webBrowser = createBrowser(screenWidth, screenHeight, true, false)
-	showCursor(true)
+	webBrowser = createBrowser(browserSizeX, browserSizeY, true, true)
+	requestBrowserDomains({indexHTML})
+	--toggleBrowserDevTools(webBrowser, true)
+	--showCursor(true)
 
-	
 	addEventHandler("onClientBrowserCreated", webBrowser, 
 		function()
-			loadBrowserURL(browser, indexHTML)
-			addEventHandler("onClientRender", root, 
+			loadBrowserURL(webBrowser,indexHTML)
+			addEventHandler("onClientRender", root,
 				function()
-					dxDrawImage(0, 0, screenWidth, screenHeight, webBrowser, 0, 0, 0, tocolor(255,255,255,255), true)
+					dxDrawImage(screenWidth - browserSizeX, screenHeight - browserSizeY, browserSizeX, browserSizeY, webBrowser, 0, 0, 0, tocolor(255,255,255,255), true)
 				end)
 		end)
 end
-addEvent("resource_showGUI", true)
-addEventHandler("resource_showGUI", root, showWebView)
+addEventHandler("onClientResourceStart", getRootElement(), showWebView)
 
+--notify(title, sender, message, icon, flashing)
 
-
----callback function
----in javaScript call this event (mta.triggerEvent("callbackMTA", [parameter.....]))
-function callbackMTA()
-
+function memeTest(message) 
+	outputChatBox(message)
 end
-addEvent("account_signup", true)
-addEventHandler("account_signup", root, callbackMTA)
+addEvent("memeTest", true)
+addEventHandler("memeTest", root, memeTest)
 
-
-function sendError(msg) 
-	executeBrowserJavascript(webBrowser, "document.getElementById("errorMessage").innerHTML = '" ..msg .. "'")
+function notifyPlayer(title, sender, message, icon, flashing)
+	local jscode = string.format("notify('%s', '%s', '%s', %d, '%s')", title, sender, message, icon, tostring(flashing))
+	local tmp = executeBrowserJavascript(webBrowser, jscode)
 end
+addEvent("notify_notifyPlayer", true)
+addEventHandler("notify_notifyPlayer", root, notifyPlayer)
