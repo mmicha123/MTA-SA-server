@@ -18,5 +18,7 @@
 	<file src="web/icons/done_all.png"/> 
 	
 	<!-- Exports -->
+	<export function="notifyPlayer" type="shared" />
+	<export function="notifyGlobal" />
 	
 </meta>

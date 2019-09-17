@@ -27,17 +27,9 @@ local function showWebView(forceClose)
 end
 addEventHandler("onClientResourceStart", getRootElement(), showWebView)
 
---notify(title, sender, message, icon, flashing)
-
-function memeTest(message) 
-	outputChatBox(message)
-end
-addEvent("memeTest", true)
-addEventHandler("memeTest", root, memeTest)
 
 function notifyPlayer(title, sender, message, icon, flashing)
-	local jscode = string.format("notify('%s', '%s', '%s', %d, '%s')", title, sender, message, icon, tostring(flashing))
-	local tmp = executeBrowserJavascript(webBrowser, jscode)
+	executeBrowserJavascript(webBrowser, string.format("notify('%s', '%s', '%s', %d, '%s')", title, sender, message, icon, tostring(flashing)))
 end
 addEvent("notify_notifyPlayer", true)
 addEventHandler("notify_notifyPlayer", root, notifyPlayer)
