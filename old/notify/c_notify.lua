@@ -12,7 +12,7 @@ local function showWebView(forceClose)
 	end
 
 	webBrowser = createBrowser(browserSizeX, browserSizeY, true, true)
-	requestBrowserDomains({indexHTML})
+	--requestBrowserDomains({indexHTML})
 	--toggleBrowserDevTools(webBrowser, true)
 	--showCursor(true)
 

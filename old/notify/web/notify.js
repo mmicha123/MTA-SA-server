@@ -35,10 +35,6 @@ function meme(message) {
 
 
 function notify(title, sender, message, icon, flashing) {
-    if (icon === 0) {
-        mta.triggerEvent("memeTest", "its int")
-    }
-
     var itm = document.getElementById("card0")
     var cln = itm.cloneNode(true) //clone the default element
 
@@ -50,7 +46,7 @@ function notify(title, sender, message, icon, flashing) {
     cln.getElementsByTagName('p')[0].innerHTML = sender //sender
     cln.getElementsByTagName('p')[1].innerHTML = message //message
     cln.getElementsByTagName('img')[0].src = "http://mta/notify/web/icons/" + icons[icon].text // icon text
-    mta.triggerEvent("memeTest", "hay thats me")
+
     cln.getElementsByTagName('img')[0].style.filter = icons[icon].color // icon text
     cln.style.opacity = 0
     setTimeout(() => cln.style.opacity = 1, 100);
