@@ -1,0 +1,14 @@
+<meta>
+    <info author="mmicha, kkristi" version="1.0" type="script" showInResourceBrowser="false" name=""/>
+    
+    <oop>true</oop>
+
+    <!--CLIENT-->
+    <script src=".client/client.lua" type="client" cache="false"/>
+    
+    
+    
+    <!--SERVER-->
+    <script src="s_account.lua" type="server"/>
+
+</meta>
